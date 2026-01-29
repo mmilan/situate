@@ -28,6 +28,7 @@
         <div class="nav-links">
           <% if authenticated? %>
             <%= link_to "@#{Current.user.username}", user_path(Current.user.username) %>
+            <%= link_to "Settings", settings_account_path %>
             <%= button_to "Sign out", session_path, method: :delete, class: "btn-link" %>
           <% else %>
             <%= link_to "Sign in", new_session_path %>

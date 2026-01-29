@@ -265,6 +265,22 @@ a:hover {
   margin-bottom: 1.5rem;
 }
 
+.auth-container h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  color: var(--color-text);
+}
+
+.form-success {
+  background: #dcfce7;
+  border: 1px solid #bbf7d0;
+  border-radius: var(--radius);
+  padding: 1rem;
+  margin-bottom: 1rem;
+  color: #166534;
+}
+
 /* Welcome Section */
 .welcome {
   text-align: center;

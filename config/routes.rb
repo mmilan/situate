@@ -22,6 +22,11 @@ Rails.application.routes.draw do
   # Tags management
   resources :tags, only: [:index, :create, :destroy]
 
+  # Account settings
+  get "settings/account", to: "settings#account"
+  patch "settings/account", to: "settings#update_account"
+  patch "settings/password", to: "settings#update_password"
+
   # Health check
   get "up" => "rails/health#show", as: :rails_health_check
 end

@@ -1,4 +1,10 @@
-You can reset your password on
+Hi <%= @user.username %>,
+
+You requested a password reset for your Situate account.
+
+Reset your password here:
 <%= edit_password_url(@user.password_reset_token) %>
 
-This link will expire in <%= distance_of_time_in_words(0, @user.password_reset_token_expires_in) %>.
+This link will expire in 15 minutes.
+
+If you didn't request this, you can safely ignore this email.
