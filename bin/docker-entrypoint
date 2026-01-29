@@ -1,9 +1,15 @@
-#!/bin/bash -e
+#!/bin/bash
+
+echo "=== Docker entrypoint starting ==="
+echo "RAILS_ENV: $RAILS_ENV"
+echo "DATABASE_URL set: $(if [ -n "$DATABASE_URL" ]; then echo 'yes'; else echo 'NO!'; fi)"
+echo "Command: $@"
 
 # Always run migrations in production
 if [ "$RAILS_ENV" = "production" ]; then
   echo "Running database migrations..."
-  ./bin/rails db:migrate
+  ./bin/rails db:migrate || echo "Migration failed with exit code: $?"
 fi
 
+echo "Starting server..."
 exec "${@}"
