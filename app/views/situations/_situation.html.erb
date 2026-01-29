@@ -1,0 +1,22 @@
+<div class="situation">
+  <div class="situation-header">
+    <span class="situation-user">
+      <%= link_to "@#{situation.user.username}", user_path(situation.user.username) %>
+    </span>
+    <span class="situation-time">
+      <%= time_ago_in_words(situation.created_at) %> ago
+    </span>
+  </div>
+
+  <% if situation.message.present? %>
+    <p class="situation-message"><%= situation.message %></p>
+  <% end %>
+
+  <% if situation.tags.any? %>
+    <div class="situation-tags">
+      <% situation.tags.each do |tag| %>
+        <span class="tag"><%= tag.name %></span>
+      <% end %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,289 @@
+/*
+ * Situate.us - CSS Styles
+ */
+
+:root {
+  --color-primary: #2563eb;
+  --color-primary-dark: #1d4ed8;
+  --color-secondary: #64748b;
+  --color-success: #22c55e;
+  --color-danger: #ef4444;
+  --color-bg: #f8fafc;
+  --color-white: #ffffff;
+  --color-text: #1e293b;
+  --color-text-light: #64748b;
+  --color-border: #e2e8f0;
+  --color-tag: #dbeafe;
+  --color-tag-text: #1e40af;
+  --radius: 8px;
+  --shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Header */
+.site-header {
+  background: var(--color-white);
+  border-bottom: 1px solid var(--color-border);
+  padding: 1rem;
+}
+
+.nav-container {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--color-text);
+}
+
+.nav-links {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  width: 100%;
+}
+
+/* Footer */
+.site-footer {
+  text-align: center;
+  padding: 2rem;
+  color: var(--color-text-light);
+  font-size: 0.875rem;
+}
+
+/* Flash Messages */
+.flash {
+  padding: 1rem;
+  border-radius: var(--radius);
+  margin-bottom: 1rem;
+}
+
+.flash-notice {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.flash-alert {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+/* Buttons */
+.btn, button, input[type="submit"] {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s;
+}
+
+.btn-primary, input[type="submit"] {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.btn-primary:hover, input[type="submit"]:hover {
+  background: var(--color-primary-dark);
+  text-decoration: none;
+}
+
+.btn-link {
+  background: none;
+  color: var(--color-primary);
+  padding: 0;
+}
+
+/* Forms */
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-weight: 500;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  font-size: 1rem;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.form-errors {
+  background: #fee2e2;
+  border: 1px solid #fecaca;
+  border-radius: var(--radius);
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Cards */
+.card {
+  background: var(--color-white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Situations */
+.situation {
+  background: var(--color-white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.situation-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.situation-user {
+  font-weight: 600;
+}
+
+.situation-time {
+  color: var(--color-text-light);
+  font-size: 0.875rem;
+}
+
+.situation-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.tag {
+  display: inline-block;
+  background: var(--color-tag);
+  color: var(--color-tag-text);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+}
+
+/* Situation Form */
+.situation-form {
+  background: var(--color-white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.situation-form h2 {
+  margin-bottom: 1rem;
+}
+
+/* User Profile */
+.profile-header {
+  background: var(--color-white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.profile-username {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.profile-stats {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 1rem 0;
+  color: var(--color-text-light);
+}
+
+/* Auth Forms */
+.auth-container {
+  max-width: 400px;
+  margin: 2rem auto;
+}
+
+.auth-container h1 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Welcome Section */
+.welcome {
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
+.welcome h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.welcome p {
+  font-size: 1.25rem;
+  color: var(--color-text-light);
+  margin-bottom: 2rem;
+}
+
+.welcome-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for(:title) || "Situate" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Situate">
+    <meta name="mobile-web-app-capable" content="yes">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= yield :head %>
+
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.png">
+
+    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <nav class="nav-container">
+        <div class="nav-brand">
+          <%= link_to "situate.us", root_path, class: "logo" %>
+        </div>
+        <div class="nav-links">
+          <% if authenticated? %>
+            <%= link_to "@#{Current.user.username}", user_path(Current.user.username) %>
+            <%= button_to "Sign out", session_path, method: :delete, class: "btn-link" %>
+          <% else %>
+            <%= link_to "Sign in", new_session_path %>
+            <%= link_to "Sign up", signup_path, class: "btn-primary" %>
+          <% end %>
+        </div>
+      </nav>
+    </header>
+
+    <main class="main-content">
+      <% if notice.present? %>
+        <div class="flash flash-notice"><%= notice %></div>
+      <% end %>
+      <% if alert.present? %>
+        <div class="flash flash-alert"><%= alert %></div>
+      <% end %>
+
+      <%= yield %>
+    </main>
+
+    <footer class="site-footer">
+      <p>situate.us &mdash; broadcast your situation</p>
+    </footer>
+  </body>
+</html>

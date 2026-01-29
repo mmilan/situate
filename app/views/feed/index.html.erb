@@ -1,0 +1,68 @@
+<% if authenticated? %>
+  <div class="situation-form">
+    <h2>What's your situation?</h2>
+    <%= form_with model: @situation, url: situations_path do |f| %>
+      <div class="form-group">
+        <%= f.text_area :message, placeholder: "Add a message (optional)", rows: 2 %>
+      </div>
+
+      <div class="form-group">
+        <label>Add tags (comma or space separated):</label>
+        <input type="text" name="tag_input" placeholder="e.g., home, relaxing, available">
+      </div>
+
+      <% if @tags.any? %>
+        <div class="form-group">
+          <label>Or select from your tags:</label>
+          <div class="situation-tags">
+            <% @tags.each do |tag| %>
+              <label class="tag" style="cursor: pointer;">
+                <input type="checkbox" name="tag_ids[]" value="<%= tag.id %>" style="margin-right: 4px;">
+                <%= tag.name %>
+              </label>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+
+      <div class="form-group">
+        <label>Visibility:</label>
+        <%= f.select :visibility, [["Public", "public_visibility"], ["Followers only", "followers_only"], ["Private", "private_visibility"]] %>
+      </div>
+
+      <%= f.submit "Update Situation" %>
+    <% end %>
+  </div>
+
+  <h2>Your Feed</h2>
+  <% if @situations.any? %>
+    <% @situations.each do |situation| %>
+      <%= render partial: "situations/situation", locals: { situation: situation } %>
+    <% end %>
+  <% else %>
+    <div class="card">
+      <p>No situations yet. Follow some people or update your own situation!</p>
+    </div>
+  <% end %>
+
+<% else %>
+  <div class="welcome">
+    <h1>situate.us</h1>
+    <p>Broadcast your situation. Control your context. Connect with others.</p>
+    <div class="welcome-actions">
+      <%= link_to "Sign up", signup_path, class: "btn btn-primary" %>
+      <%= link_to "Sign in", new_session_path, class: "btn" %>
+    </div>
+  </div>
+
+  <h2>Public Situations</h2>
+  <% if @situations.any? %>
+    <% @situations.each do |situation| %>
+      <%= render partial: "situations/situation", locals: { situation: situation } %>
+    <% end %>
+  <% else %>
+    <div class="card">
+      <p>No public situations yet. Be the first to share!</p>
+    </div>
+  <% end %>
+<% end %>
